@@ -47,7 +47,8 @@ class EntryPermits(BaseModel):
     entry_count = models.PositiveIntegerField(default=10, verbose_name='تعداد دفعات مجاز')
     expiration = models.DateTimeField(verbose_name='تاریخ انقضا')
     notes = models.TextField(blank=True, verbose_name='توضیحات')
-    status = models.CharField(max_length=10, choices=StatusChoices.choices, verbose_name='وضعیت')
+    status = models.CharField(max_length=10, choices=StatusChoices.choices, verbose_name='وضعیت',
+                              default=StatusChoices.pending)
 
     class Meta:
         verbose_name = "مجوز"
