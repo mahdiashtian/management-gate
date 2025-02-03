@@ -1,5 +1,5 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from equipay.permissions import IsSuperUser, IsCurrentUser
+from config.permissions import IsSuperUser, IsCurrentUser
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter

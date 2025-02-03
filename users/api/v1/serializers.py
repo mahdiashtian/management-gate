@@ -1,8 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from users.api.exceptions import PasswordDoesNotMatch, OldPasswordDoesNotMatch
-from users.models import Room
+from users.api.v1.exceptions import PasswordDoesNotMatch, OldPasswordDoesNotMatch
 
 User = get_user_model()
 
@@ -47,10 +46,3 @@ class ChangePasswordSerializer(serializers.Serializer):
         user.set_password(self.validated_data['new_password'])
         user.save()
         return user
-
-
-class RoomSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Room
-        depth = 1
-        fields = '__all__'
