@@ -2,13 +2,12 @@ from django.urls import path, include, re_path
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenVerifyView
 
-from users.api.api_views import UserViewSet, TokenBlacklistView, TokenRefreshView, TokenObtainPairView, RoomViewSet
+from users.api.v1.api_views import UserViewSet, TokenBlacklistView, TokenRefreshView, TokenObtainPairView
 
 app_name = 'user'
 
 routers = DefaultRouter()
 routers.register(r'users', UserViewSet, basename='user')
-routers.register(r'rooms', RoomViewSet, basename='room')
 
 urlpatterns = [
     re_path(r"^auth/jwt/create/?", TokenObtainPairView.as_view(), name="jwt-create"),

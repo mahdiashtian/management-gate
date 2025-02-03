@@ -10,21 +10,16 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt import views as jwt_views
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 
-from users.api.serializers import UserSerializer, ChangePasswordSerializer, UserCreateSerializer, RoomSerializer
-from users.models import User, Room
+from users.api.v1.serializers import UserSerializer, ChangePasswordSerializer, UserCreateSerializer
+from users.models import User
 from users.security import set_jwt_cookies, set_jwt_access_cookie, unset_jwt_cookies
-
-
-class RoomViewSet(ModelViewSet):
-    queryset = Room.objects.all()
-    serializer_class = RoomSerializer
 
 
 class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
     filter_backends = [DjangoFilterBackend, SearchFilter]
     search_fields = ['first_name', 'last_name', 'username']
-    filterset_fields = ['is_staff', 'is_superuser', 'is_active']
+    filterset_fields = ['is_staff', 'is_superuser', 'is_active', 'role']
     ordering_fields = ['id']
 
     @action(methods=['get'], detail=False, url_path='me', url_name='me')

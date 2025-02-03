@@ -17,7 +17,7 @@ class User(AbstractUser):
                                     , null=True, blank=True)
     role = models.CharField(
         max_length=50,
-        choices=[('admin', 'Admin'), ('user', 'User'), ('guest', 'Guest')],
+        choices=[('admin', 'admin'), ('user', 'user'), ('guest', 'guest')],
         default='user',
         verbose_name='نقش کاربر'
     )
